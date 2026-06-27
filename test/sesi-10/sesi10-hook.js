@@ -10,8 +10,8 @@ describe('Dashboard Test', function () {
         driver = await new Builder().forBrowser('chrome').build();
     });
 
-    after(async function () {
-        console.log('ini di dalam after() hook')
+    beforeEach(async function () {
+        console.log('ini di dalam beforeEach() hook')
         await driver.quit();
     });
 

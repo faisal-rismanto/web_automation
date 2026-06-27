@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-06-27T14:19:45.596Z",
+    "end": "2026-06-27T14:19:55.445Z",
+    "duration": 9849,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "668a0b62-8661-4728-954f-e1338703e20a",
+      "title": "",
+      "fullFile": "/Users/faisalrismanto/Tugas/web-automation/test/sesi-9/sesi9.js",
+      "file": "/test/sesi-9/sesi9.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d2552069-4ae5-4695-83be-f728c0c801d3",
+          "title": "Google Search Test",
+          "fullFile": "/Users/faisalrismanto/Tugas/web-automation/test/sesi-9/sesi9.js",
+          "file": "/test/sesi-9/sesi9.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Visit SauceDemo dan cek page title",
+              "fullTitle": "Google Search Test Visit SauceDemo dan cek page title",
+              "timedOut": false,
+              "duration": 9836,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "options = new chrome.Options();\ndriver = await new Builder().forBrowser('chrome').build();\n// driver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://www.saucedemo.com');\nconst title = await driver.getTitle();\n// assert: memastikan object sama persis\nassert.strictEqual(title, 'Swag Labs');\n// inputs\nlet inputUsername = await driver.findElement(By.css('[data-test=\"username\"]'))\nlet inputPassword = await driver.findElement(By.xpath('//*[@data-test=\"password\"]'))\nlet buttonLogin = await driver.findElement(By.className('submit-button btn_action'))\nawait inputUsername.sendKeys('standard_user')\nawait inputPassword.sendKeys('secret_sauce')\nawait buttonLogin.click()\n\n// tunggu element tampil\nlet buttonCart = await driver.wait(\n    until.elementLocated(By.xpath('//*[@data-test=\"shopping-cart-link\"]')), \n    10000\n);\nawait driver.wait(until.elementIsVisible(buttonCart), 5000, 'Shopping cart harus tampil');\n\n// assert: elememt ada\nawait buttonCart.isDisplayed()\n// assert: text dalam element benar\nlet textAppLogo = await driver.findElement(By.className('app_logo'))\nlet logotext = await textAppLogo.getText()\nassert.strictEqual(logotext, 'Swag Labs')\nawait driver.sleep(5000)\nlet dropdownSort = await driver.findElement(By.xpath('//selest'))\nawait dropdownSort.click()\nlet opsi = await driver.findElement(By.xpath('//option[text()=\"Name (Z to A)\"]'))\nawait opsi.click()\nawait driver.sleep(5000)\n\nawait driver.quit();",
+              "err": {
+                "message": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//selest\"}\n  (Session info: chrome=149.0.7827.201)",
+                "estack": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//selest\"}\n  (Session info: chrome=149.0.7827.201)\n    at Object.throwDecodedError (node_modules/selenium-webdriver/lib/error.js:523:15)\n    at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:527:13)\n    at Executor.execute (node_modules/selenium-webdriver/lib/http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Driver.execute (node_modules/selenium-webdriver/lib/webdriver.js:745:17)\n    at async Context.<anonymous> (test/sesi-9/sesi9.js:53:28)",
+                "diff": null
+              },
+              "uuid": "4e50b898-7015-47b9-87e2-f79af91e2ee5",
+              "parentUUID": "d2552069-4ae5-4695-83be-f728c0c801d3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "4e50b898-7015-47b9-87e2-f79af91e2ee5"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 9836,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.6"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
